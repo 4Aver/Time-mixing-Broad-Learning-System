@@ -104,7 +104,7 @@ class Model(nn.Module):
     def forward(self, x_enc):
         dec_out = self.encoder(x_enc)
         dec_out = self.dense_feature(dec_out).squeeze(-1)
-        return self.sigmoid(dec_out[:, -self.pred_len:])  # [B, L, D]
+        return dec_out[:, -self.pred_len:]  # [B, L, D]
 
 
 if __name__ == "__main__":
